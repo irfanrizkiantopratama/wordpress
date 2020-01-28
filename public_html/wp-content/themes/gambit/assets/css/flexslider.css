@@ -1,0 +1,328 @@
+/*
+ * jQuery FlexSlider v2.5.0
+ * http://www.woothemes.com/flexslider/
+ *
+ * Copyright 2012 WooThemes
+ * Free to use under the GPLv2 and later license.
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ *
+ * Contributing author: Tyler Smith (@mbmufffin)
+ *
+ * @package Gambit
+ */
+
+/* ====================================================================================================================
+ * RESETS
+ * ====================================================================================================================*/
+.zeeflex-container a:hover,
+.zeeflex-slider a:hover,
+.zeeflex-container a:focus,
+.zeeflex-slider a:focus {
+	outline: none;
+}
+.zeeslides,
+.zeeslides > li,
+.zeeflex-control-nav,
+.zeeflex-direction-nav {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.zeeflex-pauseplay span {
+	text-transform: capitalize;
+}
+
+/* ====================================================================================================================
+ * BASE STYLES
+ * ====================================================================================================================*/
+.zeeflexslider {
+	margin: 0;
+	padding: 0;
+}
+.zeeflexslider .zeeslides > li {
+	display: none;
+	-webkit-backface-visibility: hidden;
+}
+.zeeflexslider .zeeslides img {
+	display: block;
+	width: 100%;
+}
+.zeeflexslider .zeeslides:after {
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	content: "\0020";
+	line-height: 0;
+}
+html[xmlns] .zeeflexslider .zeeslides {
+	display: block;
+}
+* html .zeeflexslider .zeeslides {
+	height: 1%;
+}
+.no-js .zeeflexslider .zeeslides > li:first-child {
+	display: block;
+}
+
+/* ====================================================================================================================
+ * Gambit Slider Theme
+ * ====================================================================================================================*/
+
+.post-slider-container {
+	overflow: hidden;
+	margin: 0 0 2em;
+	background: #e5e5e5;
+}
+
+.post-slider-wrap {
+	position: relative;
+}
+
+.post-slider, .zeeflexslider .zeeslides {
+	zoom: 1;
+}
+
+.post-slider .zeeslide {
+	position: relative;
+}
+
+.zeeflex-viewport {
+	max-height: 2000px;
+	transition: all 1s ease;
+}
+
+.post-slider .zeeslide .slide-image-wrap {
+	margin: 0;
+	padding: 0;
+}
+
+.post-slider .zeeslide .slide-image {
+	margin: auto;
+	padding: 0;
+	max-width: 100%;
+	max-height: 450px;
+	width: auto;
+	height: auto;
+	vertical-align: top;
+}
+
+.post-slider .zeeslide .slide-post {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 999;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 1em 1.5em 1.5em;
+	background: rgba(0,0,0,0.5);
+	color: #fff;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
+
+.post-slider .zeeslide .slide-post .entry-title a:link,
+.post-slider .zeeslide .slide-post .entry-title a:visited,
+.post-slider .zeeslide .slide-post .entry-content a:link,
+.post-slider .zeeslide .slide-post .entry-content a:visited,
+.post-slider .zeeslide .slide-post .entry-content a:hover,
+.post-slider .zeeslide .slide-post .entry-content a:active {
+	color: #fff;
+	text-decoration: none;
+}
+
+.post-slider .zeeslide .slide-post .entry-title a:hover,
+.post-slider .zeeslide .slide-post .entry-title a:active {
+	color: #ccc;
+}
+
+.post-slider .zeeslide .slide-post .entry-content {
+	margin: 0.5em 0 0;
+	font-size: 15px;
+	font-size: 0.9375rem;;
+}
+
+.post-slider .zeeslide .slide-post .entry-content p {
+	display: inline;
+	margin: 0;
+}
+
+.post-slider .zeeslide .slide-post .entry-content p:last-child:after {
+	display: inline;
+	margin: 0 0 0 0.4em;
+	color: #fff;
+	content: "\00BB";
+	vertical-align: middle;
+	text-decoration: inherit;
+	font-size: 14px;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.post-slider-controls {
+	clear: left;
+}
+
+/* Direction Nav */
+.post-slider-controls .zeeflex-direction-nav {
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	*height: 0;
+}
+
+.post-slider-controls .zeeflex-direction-nav a {
+	position: absolute;
+	z-index: 10;
+	display: block;
+	margin: 0;
+	width: 40px;
+	height: 40px;
+	background: #1585b5;
+	color: #fff;
+	text-align: left;
+	font-size: 0;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.post-slider-controls .zeeflex-direction-nav a:hover {
+	background: #252525;
+	text-decoration: none;
+}
+
+.post-slider-controls .zeeflex-direction-nav a:before {
+	display: inline-block;
+	margin: 0.35em;
+	color: #fff;
+	vertical-align: text-bottom;
+	text-decoration: inherit;
+	font: normal 24px/1 Genericons;
+	-webkit-font-smoothing: antialiased;
+}
+
+.post-slider-controls .zeeflex-direction-nav a.zeeflex-next:before {
+	content: '\f431';
+	-webkit-transform:rotate(270deg);
+	-moz-transform:rotate(270deg);
+	-o-transform:rotate(270deg);
+	-ms-transform:rotate(270deg);
+}
+
+.post-slider-controls .zeeflex-direction-nav a.zeeflex-prev:before {
+	content: '\f431';
+	-webkit-transform:rotate(90deg);
+	-moz-transform:rotate(90deg);
+	-o-transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+}
+
+.post-slider-controls .zeeflex-direction-nav .zeeflex-next {
+	left: 42px;
+}
+
+/* Control Nav */
+.post-slider-controls .zeeflex-control-nav {
+	position: absolute;
+	top: 0.25em;
+	right: 0;
+	z-index: 10;
+	padding: 1em;
+}
+
+.post-slider-controls .zeeflex-control-nav li {
+	display: inline-block;
+	*display: inline;
+	margin: 0 3px;
+	zoom: 1;
+}
+
+.post-slider-controls .zeeflex-control-nav li a {
+	display: block;
+	width: 14px;
+	height: 14px;
+	background: rgba(255,255,255,0.7);
+	text-indent: -9999px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.post-slider-controls .zeeflex-control-nav li a:hover {
+	background: #fff;
+}
+
+.post-slider-controls .zeeflex-control-nav li a.zeeflex-active {
+	background: #fff;
+	cursor: default;
+}
+
+/*--------------------------------------------------------------
+# Media Queries
+--------------------------------------------------------------*/
+
+@media only screen and (max-width: 80em) {
+	.post-slider .zeeslide .slide-post .entry-title {
+		font-size: 24px;
+		font-size: 1.5rem;
+	}
+
+}
+
+@media only screen and (max-width: 70em) {
+	.post-slider .zeeslide .slide-post .entry-title {
+		font-size: 28px;
+		font-size: 1.75rem;
+	}
+
+}
+
+@media only screen and (max-width: 60em) {
+	.post-slider .zeeslide .slide-post .entry-title {
+		font-size: 24px;
+		font-size: 1.5rem;
+	}
+
+}
+
+@media only screen and (max-width: 50em) {
+	.post-slider .zeeslide .slide-post .entry-title {
+		font-size: 28px;
+		font-size: 1.75rem;
+	}
+
+}
+
+@media only screen and (max-width: 40em) {
+	.post-slider .zeeslide .slide-post {
+		position: static;
+		right: auto;
+		bottom: auto;
+		left: auto;
+		border-top: 1px solid #fff;
+		background: #252525;
+	}
+
+	.post-slider .zeeslide .slide-post .entry-title {
+		font-size: 24px;
+		font-size: 1.5rem;
+	}
+
+}
+
+@media only screen and (max-width: 30em) {
+	.post-slider .zeeslide .slide-post .entry-title {
+		font-size: 22px;
+		font-size: 1.375rem;
+	}
+
+}
+
+@media only screen and (max-width: 20em) {
+	.post-slider .zeeslide .slide-post .entry-title {
+		font-size: 20px;
+		font-size: 1.25rem;
+	}
+
+}
